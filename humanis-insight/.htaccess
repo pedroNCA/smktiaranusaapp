@@ -1,0 +1,51 @@
+# ======================================================================
+# 1. KEAMANAN DASAR
+# ======================================================================
+# Mematikan fitur directory listing (mencegah orang melihat isi folder jika tidak ada index.php)
+Options -Indexes
+
+# Mengatur file default yang dimuat
+DirectoryIndex index.php
+
+# ======================================================================
+# 2. PROTEKSI FILE & FOLDER SENSITIF
+# ======================================================================
+# Blokir akses ke file .env, composer, dan token Google Drive
+<FilesMatch "^(\.env|composer\.json|composer\.lock|credentials\.json|token\.json)$">
+    Require all denied
+</FilesMatch>
+
+# Blokir akses langsung ke folder sistem (hanya boleh diakses lewat include/require PHP)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(config|includes|vendor)/ - [F,L]
+</IfModule>
+
+# ======================================================================
+# 3. FORCE HTTPS (PERSIAPAN UNTUK HOSTING / DIRECTADMIN)
+# ======================================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Hapus tanda pagar (#) pada dua baris di bawah ini SAAT SUDAH DI DIRECTADMIN
+    # agar semua trafik dialihkan otomatis ke HTTPS yang aman.
+     RewriteCond %{HTTPS} off
+     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ======================================================================
+# 4. KEAMANAN TAMBAHAN (SECURITY HEADERS)
+# ======================================================================
+<IfModule mod_headers.c>
+    # Mencegah serangan XSS dan Clickjacking
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# ======================================================================
+# 5. OPTIMASI PERFORMA & CACHE (ASSETS)
+# ======================================================================
+<IfModule mod_deflate.c>
+    # Aktifkan kompresi GZIP untuk mempercepat loading halaman web
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
+</IfModule>

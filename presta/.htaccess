@@ -1,0 +1,75 @@
+# ==============================================================================
+# 1. PENGATURAN ROUTING (FRONT CONTROLLER)
+# ==============================================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # (Opsional) Paksa penggunaan HTTPS
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Jangan lakukan rewrite jika file/folder benar-benar ada (misal: /assets)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    # Arahkan semua sisa request ke index.php
+    RewriteRule ^(.*)$ index.php?route=$1 [QSA,L]
+</IfModule>
+
+# ==============================================================================
+# 2. KEAMANAN DASAR & BLOKIR AKSES FILE SENSITIF
+# ==============================================================================
+# Mencegah pengunjung melihat daftar isi folder (Directory Listing)
+Options -Indexes
+
+# Blokir akses ke file sistem (.htaccess, .env, .git, dll) dan file log
+<FilesMatch "^\.|\.(env|ini|log|sh|inc|bak|sql)$">
+    Require all denied
+</FilesMatch>
+
+# Blokir akses ke file konfigurasi dependensi
+<FilesMatch "(composer\.json|composer\.lock|package\.json|package-lock\.json)">
+    Require all denied
+</FilesMatch>
+
+# ==============================================================================
+# 3. HTTP SECURITY HEADERS
+# ==============================================================================
+<IfModule mod_headers.c>
+    # Mencegah browser menebak MIME type (Mencegah XSS)
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Mengaktifkan filter XSS bawaan browser
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Mencegah web Anda di-embed di iframe web lain (Mencegah Clickjacking)
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Mengontrol informasi referer yang dikirim ke situs lain
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ==============================================================================
+# 4. OPTIMASI PERFORMA (GZIP & BROWSER CACHING)
+# ==============================================================================
+<IfModule mod_deflate.c>
+    # Kompresi file teks, HTML, CSS, JavaScript, JSON, dan XML
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Cache gambar dan font selama 1 bulan
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 month"
+    
+    # Cache CSS dan JS selama 1 minggu
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>

@@ -1,0 +1,1324 @@
+/* ================= VARIABLES ================= */
+:root {
+    --primary: #04B2D9;
+    --primary-dark: #0390af;
+    --white: #FFFFFF;
+    --bg-main: #FFFFFF;
+    --bg-solid-light: #f8fafc;
+    /* Warna solid abu-abu sangat muda/kebiruan */
+    --text-dark: #1e293b;
+    --text-gray: #64748b;
+    --border-color: #e2e8f0;
+}
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 36px;
+    width: auto;
+}
+
+.nav-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary);
+}
+
+.btn-login-nav {
+    background-color: var(--primary);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    /* Sudut sedikit melengkung, profesional */
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-login-nav:hover {
+    background-color: var(--primary-dark);
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+    background-color: var(--bg-main);
+    padding: 160px 0 100px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 24px;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #e0f2fe;
+    /* Warna solid biru muda */
+    color: var(--primary-dark);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.hero-desc {
+    font-size: 1.15rem;
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 12px 28px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-dark);
+    padding: 12px 28px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-gray);
+    background-color: var(--bg-solid-light);
+}
+
+/* ================= SECTIONS ================= */
+.section {
+    padding: 100px 0;
+}
+
+.bg-solid-light {
+    background-color: var(--bg-solid-light);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+/* ================= GRIDS & CARDS ================= */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.card-feature {
+    background-color: var(--white);
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.card-feature:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary);
+}
+
+.icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background-color: #e0f2fe;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--primary);
+}
+
+.card-feature h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.card-feature p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* Card Role */
+.card-role {
+    background-color: var(--bg-solid-light);
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.role-header h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-role p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background-color: #0f172a;
+    /* Warna dark solid profesional */
+    color: #94a3b8;
+    padding: 40px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-brand .nav-brand {
+    color: var(--white);
+}
+
+.footer-text {
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu a:not(.btn-login-nav) {
+        display: none;
+        /* Hanya tampilkan tombol masuk di mobile */
+    }
+
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}
+
+/* ================= AUTHENTICATION (LOGIN PAGE) ================= */
+.auth-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-solid-light);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    /* Ukuran proporsional untuk form login */
+    padding: 24px;
+}
+
+.auth-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px 32px;
+    /* Memberikan efek melayang tipis yang elegan */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-logo {
+    height: 64px;
+    width: auto;
+    margin-bottom: 16px;
+}
+
+.auth-header h2 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.auth-header p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+/* Membungkus input untuk menyisipkan ikon SVG di dalamnya */
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-gray);
+}
+
+.input-icon-wrapper input {
+    width: 100%;
+    /* Padding kiri dilebarkan (44px) agar teks tidak menabrak ikon */
+    padding: 12px 16px 12px 44px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Garis fokus solid warna biru utama */
+.input-icon-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(4, 178, 217, 0.15);
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-footer {
+    margin-top: 32px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}
+
+
+/* ================= APP LAYOUT (ADMIN/DASHBOARD) ================= */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--bg-solid-light);
+}
+
+/* Sidebar Samping */
+.sidebar {
+    width: 260px;
+    background-color: var(--white);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+}
+
+.sidebar-header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-brand {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+}
+
+.sidebar-menu {
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.menu-item svg {
+    color: var(--text-gray);
+    transition: color 0.2s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: #f0f9ff;
+    color: var(--primary-dark);
+}
+
+.menu-item:hover svg,
+.menu-item.active svg {
+    color: var(--primary);
+}
+
+/* Area Konten Utama */
+.main-content {
+    flex: 1;
+    margin-left: 260px;
+    /* Offset selebar sidebar */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Atas (Topbar) */
+.topbar {
+    height: 70px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.topbar-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #e0f2fe;
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Container Konten */
+.content-area {
+    padding: 32px;
+}
+
+/* ================= KOMPONEN DASHBOARD ================= */
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Alerts */
+/* Update pada bagian .alert untuk memastikan teks membungkus (wrap) dengan benar */
+.alert {
+    display: flex;
+    align-items: flex-start;
+    /* Diubah dari center ke flex-start agar ikon tetap di atas */
+    flex-wrap: wrap;
+    /* Kunci: Memungkinkan konten turun ke bawah jika penuh */
+    gap: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    border: 1px solid transparent;
+    word-wrap: break-word;
+    /* Memastikan kata panjang akan terpotong jika perlu */
+    overflow-wrap: break-word;
+}
+
+/* Tambahkan ini jika ingin font sedikit lebih kecil di HP agar lebih lega */
+@media (max-width: 576px) {
+    .alert {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
+    .page-header {
+        margin-bottom: 15px;
+    }
+}
+
+.alert-info {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border-color: #bae6fd;
+}
+
+.alert-danger {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+.alert-success {
+    background-color: #dcfce7;
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background-color: var(--white);
+    padding: 20px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.stat-title {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.stat-hadir .stat-value {
+    color: #16a34a;
+}
+
+.stat-sakit .stat-value {
+    color: #0284c7;
+}
+
+.stat-izin .stat-value {
+    color: #d97706;
+}
+
+.stat-terlambat .stat-value {
+    color: #ea580c;
+}
+
+.stat-alfa .stat-value {
+    color: #dc2626;
+}
+
+.stat-belum .stat-value {
+    color: var(--text-dark);
+}
+
+/* Table */
+.table-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+}
+
+.data-table td {
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.form-select,
+.form-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--white);
+    font-size: 0.95rem;
+}
+
+.form-select:disabled,
+.form-input:disabled {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.table-footer {
+    padding: 20px;
+    background-color: #f8fafc;
+    text-align: right;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
+
+/* Tombol Hamburger disembunyikan di desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 15px;
+    color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+
+    /* Menampilkan tombol menu di mobile */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Sidebar disembunyikan ke kiri */
+    .sidebar {
+        left: -260px;
+        transition: 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Kelas aktif untuk memunculkan sidebar */
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* Konten utama memenuhi layar saat sidebar ditutup */
+    .main-content {
+        margin-left: 0;
+    }
+
+    /* Penyesuaian stats grid agar tidak gepeng */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .d-none-mobile {
+        display: none;
+    }
+}
+
+/* ================= DROPDOWN MENU ================= */
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 120%;
+    /* Sedikit di bawah avatar */
+    right: 0;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 180px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: none;
+    /* Sembunyi secara default */
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    display: block;
+    /* Muncul saat class 'show' ditambahkan */
+}
+
+.dropdown-item {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bg-solid-light);
+    color: var(--primary);
+}
+
+/* User Name styling di dalam dropdown */
+.dropdown-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
+/* Perbaikan Tabel agar tidak merusak layout di HP */
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto;
+        /* Memungkinkan scroll horizontal */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .data-table {
+        min-width: 600px;
+        /* Lebar minimum agar kolom tidak terlalu sempit */
+    }
+
+    /* Memperkecil padding agar lebih ringkas di HP */
+    .data-table th,
+    .data-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Tambahkan di style.css */
+.topbar-title {
+    font-size: 1rem;
+    /* Kecilkan sedikit di HP */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    /* Batasi lebar agar tidak menabrak profil */
+}
+
+/* Styling agar DataTables pas dengan tema PRESTA */
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--primary) !important;
+    color: white !important;
+    border-color: var(--primary) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--primary-dark) !important;
+    color: white !important;
+}
+
+/* Membuat tabel dan form lebih ramping */
+.data-table th,
+.data-table td {
+    padding: 8px 10px !important;
+    /* Lebih rapat */
+    font-size: 0.85rem !important;
+}
+
+.form-select,
+.form-input {
+    padding: 6px 8px !important;
+    /* Input lebih kecil */
+    font-size: 0.85rem !important;
+    max-width: 150px;
+    /* Batasi lebar dropdown */
+}
+
+/* Sembunyikan NIS di HP agar kolom Nama Siswa lebih lega */
+@media (max-width: 576px) {
+    .hide-mobile {
+        display: none;
+    }
+}
+
+/* Rapikan card utama */
+.table-card {
+    padding: 10px !important;
+    border-radius: 8px;
+}
+
+/* ================= PERBAIKAN LAYOUT MOBILE ================= */
+/* Memastikan wadah utama tidak pernah melebihi lebar layar */
+.main-content,
+.content-area {
+    max-width: 100vw;
+}
+
+@media (max-width: 768px) {
+
+    /* Mengurangi jarak kosong (padding) di layar kecil */
+    .content-area {
+        padding: 15px;
+    }
+
+    /* Mengatur ulang posisi kolom Pencarian DataTables agar rapi di HP */
+    .dataTables_wrapper .dataTables_filter {
+        float: none;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        display: block;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 8px;
+        box-sizing: border-box;
+    }
+
+    /* Memastikan tombol navigasi tabel (Prev/Next) tetap di tengah */
+    .dataTables_wrapper .dataTables_paginate {
+        float: none;
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+/* ================= TABLE STYLE (MODERN FLAT SEPERTI GAMBAR) ================= */
+.table-card {
+    background: var(--white);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    padding: 0 !important;
+    /* Menghilangkan padding agar tabel menyatu dengan ujung card */
+    overflow: hidden;
+}
+
+/* Mengatur jarak dalam pada wadah DataTables */
+.dataTables_wrapper {
+    padding: 24px;
+}
+
+.data-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.data-table thead th {
+    background-color: var(--white);
+    color: #64748b;
+    /* Teks abu-abu profesional */
+    font-size: 0.75rem !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 20px !important;
+    border-bottom: 1px solid #e2e8f0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.data-table tbody td {
+    padding: 16px 20px !important;
+    border-bottom: 1px solid #e2e8f0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: #334155;
+    vertical-align: middle;
+}
+
+/* Efek hover lembut pada baris */
+.data-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Menghilangkan garis bawah pada baris paling akhir */
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Kustomisasi Pagination DataTables agar menyerupai gambar */
+.dataTables_wrapper .dataTables_paginate {
+    margin-top: 15px;
+    font-size: 0.85rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+    border: 1px solid transparent !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+}
+
+/* Mengatur ukuran dropdown absen dan input waktu agar tidak besar */
+.compact-input {
+    width: 120px !important;
+    padding: 6px 10px !important;
+    font-size: 0.85rem !important;
+    border-radius: 6px;
+    height: 34px;
+}
+
+.compact-time {
+    width: 100px !important;
+    padding: 6px !important;
+    font-size: 0.85rem !important;
+    border-radius: 6px;
+    height: 34px;
+}
+
+/* Memperbaiki DataTables Default Pagination */
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 5px 12px !important;
+    margin: 0 2px;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+    color: var(--text-dark) !important;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--primary) !important;
+    color: white !important;
+    border: 1px solid var(--primary) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--bg-solid-light) !important;
+}
+
+/* Memperbaiki input search datatable */
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-left: 8px;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+    border-color: var(--primary);
+}
+
+/* ================= UKURAN MINI UNTUK MOBILE ================= */
+.compact-input {
+    width: 105px !important;
+    padding: 2px 6px !important;
+    font-size: 0.75rem !important;
+    border-radius: 4px !important;
+    height: 28px !important;
+}
+
+.compact-time {
+    width: 65px !important;
+    padding: 2px 6px !important;
+    font-size: 0.75rem !important;
+    border-radius: 4px !important;
+    height: 28px !important;
+    text-align: center;
+    background-color: #f8fafc !important;
+    cursor: pointer;
+}
+
+/* Styling Laporan Compact */
+.filter-box {
+    padding: 12px !important;
+    margin-bottom: 15px !important;
+}
+
+.compact-select {
+    padding: 4px 8px !important;
+    font-size: 0.85rem !important;
+    height: 32px !important;
+    border-radius: 4px;
+}
+
+.compact-btn {
+    padding: 4px 12px !important;
+    font-size: 0.85rem !important;
+    height: 32px !important;
+    line-height: 22px;
+}
+
+/* Memperkecil font tabel agar muat banyak */
+.data-table th,
+.data-table td {
+    font-size: 0.8rem !important;
+    padding: 6px !important;
+}
+
+/* ================== FIX LAYOUT RESPONSIVE ================== */
+
+/* 1. Mencegah seluruh halaman agar tidak melebar ke samping */
+body,
+html {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Membatasi card agar tidak meluber keluar layar */
+.table-card {
+    max-width: 100%;
+    overflow: hidden;
+    /* Card tidak boleh punya scroll sendiri */
+}
+
+/* 3. Hanya bagian tabel saja yang boleh digeser (scroll) */
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    /* Scroll hanya di sini */
+    -webkit-overflow-scrolling: touch;
+    /* Biar smooth di HP */
+}
+
+/* 4. Pastikan DataTables wrapper juga mengikuti lebar container */
+.dataTables_wrapper {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Mengunci lebar kolom agar tidak melar */
+#laporanTable {
+    table-layout: fixed;
+    /* KUNCI: Kolom tidak akan berubah lebar meski isi teksnya panjang */
+    width: 100%;
+}
+
+/* Kolom tanggal dan total dibuat sangat sempit */
+.date-col {
+    width: 18px !important;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    padding: 0 !important;
+    text-align: center !important;
+    font-size: 0.7rem !important;
+    overflow: hidden;
+    /* Sembunyikan teks jika meluber */
+    white-space: nowrap;
+}
+
+/* Kolom nama siswa */
+.nama-siswa {
+    width: 90px !important;
+    min-width: 90px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Memastikan wrapper benar-benar mengunci tabel */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    /* Ruang untuk scrollbar */
+}
+
+/* --- KUNCI: MENGATUR LAYOUT AGAR PAS --- */
+body,
+html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Menghilangkan scrollbar bawah browser */
+}
+
+/* Memastikan area konten utama tidak meluber */
+.content-area {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+/* Memastikan kartu tabel tidak mendorong layout keluar layar */
+.table-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    /* Kartu utama tidak boleh scroll */
+}
+
+/* Hanya container tabel yang boleh scroll */
+.table-container {
+    width: 100%;
+    overflow-x: auto !important;
+    /* Tabel bisa digeser di sini saja */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+}
+
+/* Memaksa tabel untuk tetap di dalam lebar container */
+#laporanTable {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* --- PERBAIKAN LAYOUT FILTER --- */
+.filter-box {
+    display: flex;
+    flex-wrap: wrap;
+    /* KUNCI: Membuat tombol turun ke bawah jika penuh */
+    gap: 10px;
+    align-items: center;
+    padding: 15px !important;
+}
+
+/* Memastikan tombol export tidak mendorong layout keluar */
+.export-section {
+    display: flex;
+    gap: 5px;
+    margin-left: 0 !important;
+    /* Hapus margin-left auto agar tidak mendorong */
+    width: 100%;
+    /* Bisa disesuaikan */
+}
+
+/* KUNCI: Memaksa tabel tetap di dalam container */
+.table-container {
+    width: 100%;
+    overflow-x: auto !important;
+    /* Scroll hanya di dalam tabel */
+    margin-top: 10px;
+}
+
+/* Pastikan DataTables tidak merusak layout */
+.dataTables_wrapper {
+    width: 100% !important;
+}
