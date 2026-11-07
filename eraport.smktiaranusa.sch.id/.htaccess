@@ -1,0 +1,40 @@
+# 1. Mencegah directory listing (agar isi folder tidak bisa diintip)
+Options -Indexes
+
+# 2. Blokir akses ke file sensitif menggunakan sintaks Apache 2.4
+<FilesMatch "^\.env|(\.ini|\.log|\.sql|\.json|composer\.lock|composer\.json)$">
+    Require all denied
+</FilesMatch>
+
+# 3. Pengaturan Mod Rewrite & Routing
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # -------------------------------------------------------------
+    # WAJIB: Force HTTPS (Otomatis arahkan HTTP ke HTTPS)
+    # -------------------------------------------------------------
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Blokir akses langsung ke folder sistem
+    RewriteRule ^(views|models|controllers|config|helpers)/ - [F,L]
+    
+    # Routing utama
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?route=$1 [QSA,L]
+</IfModule>
+
+# ==============================================================================
+# 4. KONTROL CACHE BROWSER (CACHING ASET)
+# ==============================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Cache gambar dan ikon selama 1 bulan agar browser tidak memuat ulang terus menerus
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+</IfModule>

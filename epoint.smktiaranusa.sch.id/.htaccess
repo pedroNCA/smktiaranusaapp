@@ -1,0 +1,49 @@
+# ===================================================
+# KEAMANAN SERVER APLIKASI E-POINT SMKS TIARA NUSA
+# ===================================================
+
+# 1. Nonaktifkan penjelajahan direktori (Directory Browsing) jika didukung server
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+# 2. Lindungi berkas sensitif dari unduhan langsung via browser
+<FilesMatch "\.(sql|md|xlsx|docx|json|lock|env|log|bak|git|htaccess|cmd|sh|zip)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order Allow,Deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# 3. Lindungi folder config dan includes dari akses file internal langsung
+<Files "config.php">
+    <IfModule mod_authz_core.c>
+        # Tetap izinkan diproses PHP engine, cegah akses direct download
+    </IfModule>
+</Files>
+
+# 4. Enforce HTTPS otomatis di server hosting (kecuali di localhost & domain virtual host .test Laragon)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTP_HOST} !^localhost
+    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1
+    RewriteCond %{HTTP_HOST} !\.test$
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 5. Security Response Headers (Cegah Clickjacking, MIME Sniffing, XSS)
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 6. Default Charset
+AddDefaultCharset UTF-8
+

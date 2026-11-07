@@ -1,0 +1,57 @@
+# ==============================================================================
+# 1. MATIKAN DIRECTORY BROWSING
+# ==============================================================================
+Options -Indexes
+
+# ==============================================================================
+# 2. LINDUNGI FILE SENSITIF
+# ==============================================================================
+<FilesMatch "\.(env|htaccess|htpasswd|ini|log|sh|json|bak|sql)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ==============================================================================
+# 3. ATUR DEFAULT CHARSET
+# ==============================================================================
+AddDefaultCharset UTF-8
+
+# ==============================================================================
+# 4. HEADER KEAMANAN TAMBAHAN
+# ==============================================================================
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ==============================================================================
+# 5. ATURAN ROUTING & KEAMANAN URL (MOD_REWRITE)
+# ==============================================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # KARENA PAKAI DOMAIN .test, REWRITEBASE CUKUP "/" SAJA
+    RewriteBase /
+
+    # A. BLOKIR AKSES KE FOLDER SISTEM
+    # (Folder 'proses' dibiarkan agar form bisa mengirim POST)
+    RewriteRule ^(config|includes)/ - [F,L]
+
+    # B. BLOKIR AKSES LANGSUNG KE FILE ASLI (Memaksa pakai Link Samaran)
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^(asesmen\.php|asesmen)$ - [R=404,L]
+
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^(auth/login\.php|auth/login)$ - [R=404,L]
+
+    # C. LINK ACAK / SAMARAN
+    RewriteRule ^mulai-bakat-x7f9/?$ asesmen.php [L,QSA]
+    RewriteRule ^gerbang-admin-z12/?$ auth/login.php [L,QSA]
+
+    # D. HILANGKAN EKSTENSI .PHP PADA URL LAINNYA
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*)$ $1.php [L]
+
+</IfModule>

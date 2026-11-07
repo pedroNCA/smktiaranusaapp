@@ -1,0 +1,20 @@
+# Nonaktifkan eksekusi PHP
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+
+# Blokir semua file PHP yang mencoba dieksekusi atau disamarkan
+<FilesMatch "(?i)\.php$|\.php\.">
+    Require all denied
+</FilesMatch>
+
+# Izinkan akses publik HANYA untuk ekstensi gambar dan dokumen ini
+<FilesMatch "(?i)\.(jpg|jpeg|png|gif|xls|xlsx|pdf)$">
+    Require all granted
+</FilesMatch>
